@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\java\com\project\courses\demo\DemoApplication.java
 C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\java\com\project\courses\demo\entity\Trainer.java
 C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\java\com\project\courses\demo\service\CourseNotFoundException.java
@@ -8,3 +9,15 @@ C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\ja
 C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\java\com\project\courses\demo\service\CoursesService.java
 C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\java\com\project\courses\demo\entity\Course.java
 C:\Users\rishav.gupta\Desktop\Project Accolite\courseManagement\demo\src\main\java\com\project\courses\demo\entity\TrainerAllocation.java
+=======
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\service\CoursesService.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\service\CourseNotFoundException.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\entity\Trainer.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\model\CourseModel.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\rest\CoursesRestController.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\entity\Course.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\entity\TrainerAllocation.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\repo\CoursesRepository.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\DemoApplication.java
+C:\Users\dhruthi.k\Desktop\courseManagement\demo\src\main\java\com\project\courses\demo\entity\CourseTrainer.java
+>>>>>>> 6a5be50aedd6e7c6e430fbe65db6f29d042e2b03

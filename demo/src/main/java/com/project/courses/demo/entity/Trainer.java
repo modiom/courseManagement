@@ -17,14 +17,14 @@ public class Trainer {
 	private int trainer_id;
 	
 	@Column(name="trainer_name")
-	private String trainer_name;
+	private String trainerName;
 	
 	
 	
 	public Trainer() {}
 
 	public Trainer(String trainer_name) {
-		this.trainer_name = trainer_name;
+		this.trainerName = trainer_name;
 		
 	}
 
@@ -40,16 +40,16 @@ public class Trainer {
 	}
 
 	public String getTrainer_name() {
-		return trainer_name;
+		return trainerName;
 	}
 
 	public void setTrainer_name(String trainer_name) {
-		this.trainer_name = trainer_name;
+		this.trainerName = trainer_name;
 	}
 
 	@Override
 	public String toString() {
-		return "trainer [trainer_id=" + trainer_id + ", trainer_name=" + trainer_name +"]";
+		return "trainer [trainer_id=" + trainer_id + ", trainer_name=" + trainerName +"]";
 	}
 	
 }

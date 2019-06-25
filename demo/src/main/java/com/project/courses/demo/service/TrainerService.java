@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.entity.CourseTrainer;
 import com.project.courses.demo.entity.Trainer;
 import com.project.courses.demo.model.CourseModel;
@@ -35,7 +36,34 @@ public class TrainerService {
 			trainersDto.add(tm);
 		}
 		return trainersDto;
-		
+	}
+	public Boolean addTrainer(TrainerModel trainerDto)
+	{
+		Trainer trainer=trainerRepository.findByTrainerName(trainerDto.getTrainerName());
+		if(trainer!=null)
+		{
+			return false;
+		}
+		else
+		{
+			trainer=new Trainer();
+			trainer.setTrainer_name(trainerDto.getTrainerName());
+			List<CourseTrainer> courseTrainers=new ArrayList<>();
+			for(CourseModel course:trainerDto.getCourses())
+			{
+				Course courseEntity=new Course();
+				courseEntity.setCourse_id(course.getCourse_id());
+				courseEntity.setCourse_name(course.getCourse_name());
+				CourseTrainer courseTrainer=new CourseTrainer();
+				courseTrainer.setCourse(courseEntity);
+				courseTrainer.setTrainer(trainer);
+				courseTrainers.add(courseTrainer);
+			}
+			trainerRepository.save(trainer);
+			courseTrainerRepository.saveAll(courseTrainers);
+			
+			return true;
+		}
 	}
 
 }

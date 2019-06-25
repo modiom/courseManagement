@@ -7,5 +7,6 @@ import com.project.courses.demo.entity.Trainer;
 
 @Repository
 public interface TrainerRepository extends CrudRepository<Trainer,Integer> {
+	public Trainer findByTrainerName(String trainerName);
 
 }

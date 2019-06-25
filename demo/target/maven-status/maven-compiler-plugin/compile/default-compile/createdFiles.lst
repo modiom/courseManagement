@@ -1,1 +1,10 @@
+com\project\courses\demo\entity\CourseTrainer.class
+com\project\courses\demo\entity\Trainer.class
+com\project\courses\demo\model\CourseModel.class
+com\project\courses\demo\entity\Course.class
+com\project\courses\demo\entity\TrainerAllocation.class
 com\project\courses\demo\DemoApplication.class
+com\project\courses\demo\service\CourseNotFoundException.class
+com\project\courses\demo\service\CoursesService.class
+com\project\courses\demo\repo\CoursesRepository.class
+com\project\courses\demo\rest\CoursesRestController.class

@@ -16,12 +16,12 @@ import javax.persistence.Table;
 @Table(name="course_trainer")
 public class CourseTrainer {
 	
-	@ManyToMany
+	@OneToOne
     @JoinColumn(name = "course_id")
     private Course course;
 
 	
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name = "trainer_id")
     private Trainer trainer;
 	

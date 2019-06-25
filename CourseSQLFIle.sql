@@ -22,7 +22,7 @@ USE `COURSE` ;
 
 -- -----------------------------------------------------
 -- Table `COURSE`.`course`
--- -----------------------------------------------------
+-- -----------------------------------------------------course
 CREATE TABLE IF NOT EXISTS `COURSE`.`course` (
   `course_id` INT NOT NULL,
   `course_name` VARCHAR(45) NULL,
@@ -39,7 +39,11 @@ CREATE TABLE IF NOT EXISTS `COURSE`.`trainer` (
   PRIMARY KEY (`trainer_id`))
 ENGINE = InnoDB;
 
+ALTER TABLE `course`.`course` 
+CHANGE COLUMN `course_id` `course_id` INT(11) NOT NULL AUTO_INCREMENT ;
 
+ALTER TABLE `course`.`trainer` 
+CHANGE COLUMN `trainer_id` `trainer_id` INT(11) NOT NULL AUTO_INCREMENT ;
 -- -----------------------------------------------------
 -- Table `COURSE`.`course_trainer`
 -- -----------------------------------------------------

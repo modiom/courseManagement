@@ -17,7 +17,6 @@ public class CoursesService {
     public void add(List<CourseModel> dto) {
     	
     	for(CourseModel c : dto) {
-    		if(repository.findById(c.getCourse_id()) == null)
     			repository.save(toEntity(c));
     		
     	}
@@ -44,7 +43,7 @@ public class CoursesService {
         Course entity = new Course();
 
         entity.setCourse_name(cto.getCourse_name());
-
+        
 		/*
 		 * entity.setTrainer_id(cto.getTrainer_id());
 		 * 

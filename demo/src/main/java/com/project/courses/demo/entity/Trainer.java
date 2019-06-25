@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Trainer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name="trainer_id")
 	private int trainer_id;
 	

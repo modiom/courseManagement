@@ -21,8 +21,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class TrainerAllocation {
 
 		@JsonSerialize
-	 	 @Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
+	 	@Id
+		@GeneratedValue
 		@Column(name="trainer_allocation_id")
 		private int trainer_allocation_id;
 	 

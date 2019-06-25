@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.courses.demo.entity.Courses;
+import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.model.CourseModel;
 import com.project.courses.demo.service.CoursesService;
 
@@ -22,7 +22,7 @@ public class CoursesRestController {
 	  @Autowired CoursesService service;
 	  
 	    @GetMapping
-	    public List<Courses> getCourses() {
+	    public List<Course> getCourses() {
 	        return service.getCourses();
 
 	    }
@@ -35,7 +35,7 @@ public class CoursesRestController {
 	    }
 
 	    @GetMapping("/{id}")
-	    public Courses getById(@PathVariable(required = true) int id) {
+	    public Course getById(@PathVariable(required = true) int id) {
 
 	        return service.getCoursesById(id);
 

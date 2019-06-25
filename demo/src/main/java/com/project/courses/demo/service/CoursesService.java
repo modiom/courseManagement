@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.project.courses.demo.entity.Courses;
+import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.model.CourseModel;
 import com.project.courses.demo.repo.CoursesRepository;
 
@@ -26,22 +26,22 @@ public class CoursesService {
 
    
 
-    public List<Courses> getCourses() {
-    	return (List<Courses>) repository.findAll();
+    public List<Course> getCourses() {
+    	return (List<Course>) repository.findAll();
 
     }
 
-    public Courses getCoursesById(int id) {
+    public Course getCoursesById(int id) {
 
-        Optional<Courses> optionalCourse = repository.findById(id);
+        Optional<Course> optionalCourse = repository.findById(id);
 
         return optionalCourse.orElseThrow(() -> new CourseNotFoundException("Couldn't find a course with id: " + id));
 
     }
 
-    private Courses toEntity(CourseModel cto) {
+    private Course toEntity(CourseModel cto) {
 
-        Courses entity = new Courses();
+        Course entity = new Course();
 
         entity.setCourse_name(cto.getCourse_name());
 

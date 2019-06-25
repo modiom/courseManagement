@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="courses")
-public class courses {
+@Table(name="course")
+public class Courses {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,18 +19,18 @@ public class courses {
 	@Column(name="course_name")
 	private String course_name;
 	
-	@Column(name="trainer_id")
-	private int trainer_id;
-	
-	@Column(name="comment")
-	private String comment;
-	
-	public courses() {}
+	/*
+	 * @Column(name="trainer_id") private int trainer_id;
+	 * 
+	 * @Column(name="comment") private String comment;
+	 */
+	public Courses() {}
 
-	public courses(String course_name, int trainer_id, String comment) {
+	public Courses(String course_name/*, int trainer_id, String comment*/) {
 		this.course_name = course_name;
-		this.trainer_id = trainer_id;
-		this.comment = comment;
+		/*
+		 * this.trainer_id = trainer_id; this.comment = comment;
+		 */
 	}
 
 	public int getCourse_id() {
@@ -49,26 +49,22 @@ public class courses {
 		this.course_name = course_name;
 	}
 
-	public int getTrainer_id() {
-		return trainer_id;
-	}
-
-	public void setTrainer_id(int trainer_id) {
-		this.trainer_id = trainer_id;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+	/*
+	 * public int getTrainer_id() { return trainer_id; }
+	 * 
+	 * public void setTrainer_id(int trainer_id) { this.trainer_id = trainer_id; }
+	 * 
+	 * public String getComment() { return comment; }
+	 * 
+	 * public void setComment(String comment) { this.comment = comment; }
+	 */
 
 	@Override
 	public String toString() {
-		return "courses [course_id=" + course_id + ", course_name=" + course_name + ", trainer_id=" + trainer_id
-				+ ", comment=" + comment + "]";
+		return "courses [course_id=" + course_id + ", course_name=" + course_name
+				+ /*
+					 * ", trainer_id=" + trainer_id + ", comment=" + comment +
+					 */ "]";
 	}
 	
 	

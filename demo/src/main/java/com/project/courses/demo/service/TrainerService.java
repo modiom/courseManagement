@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.project.courses.demo.entity.Course;
@@ -13,7 +14,7 @@ import com.project.courses.demo.model.CourseModel;
 import com.project.courses.demo.model.TrainerModel;
 import com.project.courses.demo.repo.CourseTrainerRepository;
 import com.project.courses.demo.repo.TrainerRepository;
-@Service
+@Component
 public class TrainerService {
 	@Autowired
 	private TrainerRepository trainerRepository;

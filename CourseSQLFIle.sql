@@ -1,6 +1,3 @@
-create database course;
-use course;
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -50,7 +47,8 @@ CHANGE COLUMN `trainer_id` `trainer_id` INT(11) NOT NULL AUTO_INCREMENT ;
 CREATE TABLE IF NOT EXISTS `COURSE`.`course_trainer` (
   `course_id` INT NOT NULL,
   `trainer_id` INT NOT NULL,
-  PRIMARY KEY (`course_id`, `trainer_id`),
+  `course_trainer_id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`course_trainer_id`),
   INDEX `fk_course_trainer_trainer1_idx` (`trainer_id` ASC) VISIBLE,
   CONSTRAINT `fk_course_trainer_course`
     FOREIGN KEY (`course_id`)
@@ -73,7 +71,8 @@ CREATE TABLE IF NOT EXISTS `COURSE`.`trainer_allocation` (
   `end_time` DATETIME NULL,
   `course_id` INT NOT NULL,
   `trainer_id` INT NOT NULL,
-  PRIMARY KEY (`course_id`, `trainer_id`),
+  `trainer_allocation_id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`trainer_allocation_id`),
   INDEX `fk_trainer_allocation_trainer1_idx` (`trainer_id` ASC) VISIBLE,
   CONSTRAINT `fk_train_allocation_course1`
     FOREIGN KEY (`course_id`)

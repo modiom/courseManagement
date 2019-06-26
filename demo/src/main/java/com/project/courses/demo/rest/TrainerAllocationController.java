@@ -23,18 +23,23 @@ public class TrainerAllocationController {
 	  @Autowired TrainerAllocationService service;
 	  
 	    @GetMapping
-	    public List<TrainerAllocation> getTimetable() {
-	    	System.out.println(service.getTimetable());
-	        return service.getTimetable();
+	    public List<TrainerAllocation> getTimesheet() {
+	        return service.getTimesheet();
 
 	    }
-//
-//	    @PostMapping
-//	    public void postCourse(@RequestBody List<CourseModel> cto) {
-//
-//	        service.add(cto);
-//
-//	    }
+
+	    @PostMapping
+	    public void addTimetable(@RequestBody List<Timesheet> cto) {
+
+	        service.addTimesheet(cto);
+
+	    }
+	    
+	    @GetMapping("/dummy")
+	    public Timesheet getdummy() {
+	        return service.dummy();
+
+	    }
 //
 //	    @GetMapping("/{id}")
 //	    public Course getById(@PathVariable(required = true) int id) {

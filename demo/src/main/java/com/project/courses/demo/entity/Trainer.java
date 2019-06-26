@@ -14,7 +14,7 @@ public class Trainer {
 	@Id
 	@GeneratedValue
 	@Column(name="trainer_id")
-	private int trainer_id;
+	private int trainerId;
 	
 	@Column(name="trainer_name")
 	private String trainerName;
@@ -32,11 +32,11 @@ public class Trainer {
 	
 
 	public int getTrainer_id() {
-		return trainer_id;
+		return trainerId;
 	}
 
 	public void setTrainer_id(int trainer_id) {
-		this.trainer_id = trainer_id;
+		this.trainerId = trainer_id;
 	}
 
 	public String getTrainer_name() {
@@ -49,7 +49,7 @@ public class Trainer {
 
 	@Override
 	public String toString() {
-		return "trainer [trainer_id=" + trainer_id + ", trainer_name=" + trainerName +"]";
+		return "trainer [trainer_id=" + trainerId + ", trainer_name=" + trainerName +"]";
 	}
 	
 }

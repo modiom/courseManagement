@@ -38,7 +38,7 @@ public class TrainerController {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 	}
-	@GetMapping(value="/trainer/{courseId}")
+	@GetMapping(value="/trainer/course/{courseId}")
 	ResponseEntity<List<TrainerModel>> getTrainersForCourse(@PathVariable("courseId") Integer courseId)
 	{
 		List<TrainerModel> trainers=trainerService.getTrainersForCourse(courseId);

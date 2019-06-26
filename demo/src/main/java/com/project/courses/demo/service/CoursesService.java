@@ -14,7 +14,7 @@ import com.project.courses.demo.repo.CoursesRepository;
 @Component
 public class CoursesService {
     @Autowired CoursesRepository repository;
-    @Autowired CourseTrainerRepository courseTrainerRepository;
+    
     
     public void add(List<CourseModel> dto) {
     	

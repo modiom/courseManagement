@@ -72,23 +72,19 @@ public class TrainerService {
 	}
 	public List<TrainerModel> getTrainersForCourse(int courseId)
 	{
-		List<Trainer> trainers;
+		List<TrainerModel> trainers=new ArrayList<>();
 		Optional<Course> courseCheck=courseRepository.findById(courseId);
 		if(courseCheck.isPresent())
 		{
 			Course course=courseCheck.get();
-			trainers=courseTrainerRepository.findByCourse(course);
+			List<CourseTrainer> courseTrainers=courseTrainerRepository.findByCourse(course);
+			
+			for(CourseTrainer courseTrainer:courseTrainers)
+			{
+				trainers.add(new TrainerModel(courseTrainer.getTrainer().getTrainer_id(), courseTrainer.getTrainer().getTrainer_name(),new ArrayList<>()));
+			}
 		}
-		else
-		{
-			trainers=new ArrayList<>();
-		}
-		List<TrainerModel> trainersDto=new ArrayList<>();
-		for(Trainer trainer:trainers)
-		{
-			trainersDto.add(new TrainerModel(trainer.getTrainer_id(), trainer.getTrainer_name(),new ArrayList<>()));
-		}
-		return trainersDto;
+		return trainers;
 	}
 
 }

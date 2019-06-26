@@ -2,10 +2,10 @@ package com.project.courses.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.entity.CourseTrainer;
@@ -13,11 +13,14 @@ import com.project.courses.demo.entity.Trainer;
 import com.project.courses.demo.model.CourseModel;
 import com.project.courses.demo.model.TrainerModel;
 import com.project.courses.demo.repo.CourseTrainerRepository;
+import com.project.courses.demo.repo.CoursesRepository;
 import com.project.courses.demo.repo.TrainerRepository;
 @Component
 public class TrainerService {
 	@Autowired
 	private TrainerRepository trainerRepository;
+	@Autowired
+	private CoursesRepository courseRepository;
 	@Autowired
 	private CourseTrainerRepository courseTrainerRepository;
 	public List<TrainerModel> getTrainers()
@@ -66,6 +69,26 @@ public class TrainerService {
 			
 			return true;
 		}
+	}
+	public List<TrainerModel> getTrainersForCourse(int courseId)
+	{
+		List<Trainer> trainers;
+		Optional<Course> courseCheck=courseRepository.findById(courseId);
+		if(courseCheck.isPresent())
+		{
+			Course course=courseCheck.get();
+			trainers=courseTrainerRepository.findByCourse(course);
+		}
+		else
+		{
+			trainers=new ArrayList<>();
+		}
+		List<TrainerModel> trainersDto=new ArrayList<>();
+		for(Trainer trainer:trainers)
+		{
+			trainersDto.add(new TrainerModel(trainer.getTrainer_id(), trainer.getTrainer_name(),new ArrayList<>()));
+		}
+		return trainersDto;
 	}
 
 }

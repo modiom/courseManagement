@@ -8,11 +8,13 @@ import org.springframework.stereotype.Component;
 
 import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.model.CourseModel;
+import com.project.courses.demo.repo.CourseTrainerRepository;
 import com.project.courses.demo.repo.CoursesRepository;
 
 @Component
 public class CoursesService {
     @Autowired CoursesRepository repository;
+    @Autowired CourseTrainerRepository courseTrainerRepository;
     
     public void add(List<CourseModel> dto) {
     	

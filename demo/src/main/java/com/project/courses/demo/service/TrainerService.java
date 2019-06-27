@@ -86,6 +86,21 @@ public class TrainerService {
 		}
 		return trainers;
 	}
+	public  Boolean deleteTrainer(Integer trainerId)
+	{
+		Optional<Trainer> trainerCheck=trainerRepository.findById(trainerId);
+		if(trainerCheck.isPresent())
+		{
+			Trainer trainer=trainerCheck.get();
+			courseTrainerRepository.deleteByTrainer(trainer);
+			trainerRepository.delete(trainer);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 	public Boolean updateTrainer(TrainerModel trainerDto)
 	{

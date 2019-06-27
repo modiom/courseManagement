@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,6 +48,20 @@ public class TrainerController {
 		return new ResponseEntity<List<TrainerModel>>(trainers,HttpStatus.OK);
 		
 	}
+	@PutMapping
+	public ResponseEntity<Void> updateTrainer(@RequestBody TrainerModel trainer)
+	{
+		Boolean isUpdated=trainerService.updateTrainer(trainer);
+		if(isUpdated)
+		{
+			return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		}
+		else
+		{
+			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	
 
 }

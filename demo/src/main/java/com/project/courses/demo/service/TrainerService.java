@@ -66,7 +66,7 @@ public class TrainerService {
 			}
 			trainerRepository.save(trainer);
 			courseTrainerRepository.saveAll(courseTrainers);
-			
+
 			return true;
 		}
 	}
@@ -78,13 +78,47 @@ public class TrainerService {
 		{
 			Course course=courseCheck.get();
 			List<CourseTrainer> courseTrainers=courseTrainerRepository.findByCourse(course);
-			
+
 			for(CourseTrainer courseTrainer:courseTrainers)
 			{
 				trainers.add(new TrainerModel(courseTrainer.getTrainer().getTrainer_id(), courseTrainer.getTrainer().getTrainer_name(),new ArrayList<>()));
 			}
 		}
 		return trainers;
+	}
+
+	public Boolean updateTrainer(TrainerModel trainerDto)
+	{
+		if(trainerDto.getTrainerId()==null)
+		{
+			return false;
+		}
+		else
+		{
+			Trainer trainer=new Trainer();
+			trainer.setTrainer_name(trainerDto.getTrainerName());
+			trainer.setTrainer_id(trainerDto.getTrainerId());
+			if(courseTrainerRepository.deleteByTrainer(trainer)) {
+				List<CourseTrainer> courseTrainers=new ArrayList<>();
+				for(CourseModel course:trainerDto.getCourses())
+				{
+					Course courseEntity=new Course();
+					courseEntity.setCourse_id(course.getCourse_id());
+					courseEntity.setCourse_name(course.getCourse_name());
+					CourseTrainer courseTrainer=new CourseTrainer();
+					courseTrainer.setCourse(courseEntity);
+					courseTrainer.setTrainer(trainer);
+					courseTrainers.add(courseTrainer);
+				}
+				trainerRepository.save(trainer);
+				courseTrainerRepository.saveAll(courseTrainers);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 
 }

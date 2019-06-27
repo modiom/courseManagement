@@ -3,7 +3,7 @@ package com.project.courses.demo.model;
 import java.util.List;
 
 public class TrainerModel {
-	private int trainerId;
+	private Integer trainerId;
 	private String trainerName;
 	private List<CourseModel> courses;	
 	public TrainerModel(int trainerId, String trainerName, List<CourseModel> courses) {
@@ -12,7 +12,7 @@ public class TrainerModel {
 		this.trainerName = trainerName;
 		this.courses = courses;
 	}
-	public int getTrainerId() {
+	public Integer getTrainerId() {
 		return trainerId;
 	}
 	public void setTrainerId(int trainerId) {

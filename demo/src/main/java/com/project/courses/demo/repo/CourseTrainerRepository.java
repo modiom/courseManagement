@@ -11,6 +11,6 @@ import com.project.courses.demo.entity.Trainer;
 public interface CourseTrainerRepository extends CrudRepository<CourseTrainer,Integer> {
 	public List<CourseTrainer> findByTrainer(Trainer trainer);
 	public List<CourseTrainer> findByCourse(Course course);
-	public Boolean deleteByTrainer(Trainer trainer);
+//	public Boolean deleteByTrainer(Trainer trainer);
 
 }

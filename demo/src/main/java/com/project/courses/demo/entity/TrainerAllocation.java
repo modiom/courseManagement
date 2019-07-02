@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -93,6 +94,11 @@ public class TrainerAllocation {
 		@JsonSerialize
 		@Column(name="comment")
 		private String comment;
+		
+		@JsonSerialize
+		@ManyToOne
+	    @JoinColumn(name = "batch_id")
+	    private Batch batch;
 
 		public String getComment() {
 			return comment;
@@ -100,6 +106,22 @@ public class TrainerAllocation {
 
 		public void setComment(String comment) {
 			this.comment = comment;
+		}
+
+		public Trainer getBackupTrainer() {
+			return backupTrainer;
+		}
+
+		public void setBackupTrainer(Trainer backupTrainer) {
+			this.backupTrainer = backupTrainer;
+		}
+
+		public Batch getBatch() {
+			return batch;
+		}
+
+		public void setBatch(Batch batch) {
+			this.batch = batch;
 		}
 
 		@Override

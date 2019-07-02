@@ -7,6 +7,7 @@ public class Timesheet {
 	private String endTime;
 	private int course_id;
 	private int trainer_id;
+	private int batch_id;
 	private int backup_trainer_id;
 	private String comment;
 
@@ -16,6 +17,14 @@ public class Timesheet {
 
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
+	}
+
+	public int getBatch_id() {
+		return batch_id;
+	}
+
+	public void setBatch_id(int batch_id) {
+		this.batch_id = batch_id;
 	}
 
 	public String getEndTime() {

@@ -8,10 +8,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.project.courses.demo.entity.Batch;
 import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.entity.Trainer;
 import com.project.courses.demo.entity.TrainerAllocation;
 import com.project.courses.demo.model.Timesheet;
+import com.project.courses.demo.repo.BatchRepository;
 import com.project.courses.demo.repo.CoursesRepository;
 import com.project.courses.demo.repo.TrainerAllocationRepository;
 import com.project.courses.demo.repo.TrainerRepository;
@@ -25,6 +27,8 @@ public class TrainerAllocationService {
 	TrainerRepository trainerRepository;
 	@Autowired
 	CoursesRepository coursesRepository;
+	@Autowired
+	BatchRepository batchRepository;
 
 	public List<TrainerAllocation> getTimesheet() {
 		return (List<TrainerAllocation>) repository.findAll();
@@ -55,7 +59,8 @@ public class TrainerAllocationService {
 		entity.setTrainer(trainer);
 		Trainer backupTrainer = trainerRepository.findByTrainerId(cto.getBackup_trainer_id());
 		entity.setBackup_trainer(backupTrainer);
-		
+		Batch batch = batchRepository.findByBatchId(cto.getBatch_id());
+		entity.setBatch(batch);
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		LocalDateTime lst = LocalDateTime.parse(cto.getStartTime(), f);
 		entity.setStart_time(lst);
@@ -70,18 +75,18 @@ public class TrainerAllocationService {
 	}
 
 	public void updateTimesheet(Timesheet cto) {
-		TrainerAllocation trainerAllocation=toEntity(cto);
+		TrainerAllocation trainerAllocation = toEntity(cto);
 		repository.save(trainerAllocation);
-		
+
 	}
-	
+
 	public TrainerAllocation getById(int id) {
 		return repository.findById(id).get();
 	}
 
 	public void deleteTimetable(int id) {
 		repository.deleteById(id);
-		
+
 	}
 
 }

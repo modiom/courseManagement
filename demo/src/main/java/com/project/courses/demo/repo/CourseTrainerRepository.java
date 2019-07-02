@@ -12,5 +12,6 @@ public interface CourseTrainerRepository extends CrudRepository<CourseTrainer,In
 	public List<CourseTrainer> findByTrainer(Trainer trainer);
 	public List<CourseTrainer> findByCourse(Course course);
 //	public Boolean deleteByTrainer(Trainer trainer);
+	public boolean deleteByTrainer(Trainer trainer);
 
 }

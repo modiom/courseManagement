@@ -62,6 +62,16 @@ CREATE TABLE IF NOT EXISTS `COURSE`.`course_trainer` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `COURSE`.`batch`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `COURSE`.`batch` (
+  `batch_id` INT NOT NULL AUTO_INCREMENT,
+  `batch_name` VARCHAR(45) NOT NULL,
+  `batch_year` INT NOT NULL,
+  PRIMARY KEY (`batch_id`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `COURSE`.`trainer_allocation`
@@ -71,12 +81,18 @@ CREATE TABLE IF NOT EXISTS `COURSE`.`trainer_allocation` (
   `end_time` DATETIME NULL,
   `course_id` INT NOT NULL,
   `trainer_id` INT NOT NULL,
+  `batch_id` INT NOT NULL,
   `trainer_allocation_id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`trainer_allocation_id`),
   INDEX `fk_trainer_allocation_trainer1_idx` (`trainer_id` ASC) VISIBLE,
   CONSTRAINT `fk_train_allocation_course1`
     FOREIGN KEY (`course_id`)
     REFERENCES `COURSE`.`course` (`course_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_batch_id_batch1`
+    FOREIGN KEY (`batch_id`)
+    REFERENCES `COURSE`.`batch` (`batch_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_trainer_allocation_trainer1`

@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.project.courses.demo.DemoApplicationTests
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.368 s - in com.project.courses.demo.DemoApplicationTests
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.981 s - in com.project.courses.demo.DemoApplicationTests
->>>>>>> 6a5be50aedd6e7c6e430fbe65db6f29d042e2b03
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.532 s - in com.project.courses.demo.DemoApplicationTests

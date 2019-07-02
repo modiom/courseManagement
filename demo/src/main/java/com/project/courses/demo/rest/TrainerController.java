@@ -71,7 +71,7 @@ public class TrainerController {
 		}
 		else
 		{
-			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 		
 	}

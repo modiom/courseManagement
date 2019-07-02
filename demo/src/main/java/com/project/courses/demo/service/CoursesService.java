@@ -13,48 +13,64 @@ import com.project.courses.demo.repo.CoursesRepository;
 
 @Component
 public class CoursesService {
-    @Autowired CoursesRepository repository;
-    
-    
-    public void add(List<CourseModel> dto) {
-    	
-    	for(CourseModel c : dto) {
-    			repository.save(toEntity(c));
-    		
-    	}
+	@Autowired CoursesRepository repository;
 
-    }
 
-   
+	public void add(List<CourseModel> dto) {
 
-    public List<Course> getCourses() {
-    	return (List<Course>) repository.findAll();
+		for(CourseModel c : dto) {
+			repository.save(toEntity(c));
 
-    }
+		}
+	}
+	public boolean addCourse(CourseModel courseDto)
+	{
+		Course course=repository.findByCourseName(courseDto.getCourse_name());
+		if(course!=null)
+		{
+			return false;
+		}
+		else
+		{
+			repository.save(toEntity(courseDto));
+			return true;
+		}
+	}
 
-    public Course getCoursesById(int id) {
 
-        Optional<Course> optionalCourse = repository.findById(id);
 
-        return optionalCourse.orElseThrow(() -> new CourseNotFoundException("Couldn't find a course with id: " + id));
+	public List<Course> getCourses() {
+		return (List<Course>) repository.findAll();
 
-    }
+	}
 
-    private Course toEntity(CourseModel cto) {
+	public Course getCoursesById(int id) {
 
-        Course entity = new Course();
+		Optional<Course> optionalCourse = repository.findById(id);
 
-        entity.setCourse_name(cto.getCourse_name());
-        
+		return optionalCourse.orElseThrow(() -> new CourseNotFoundException("Couldn't find a course with id: " + id));
+
+	}
+
+	private Course toEntity(CourseModel cto) {
+
+		Course entity = new Course();
+
+		entity.setCourse_name(cto.getCourse_name());
+
 		/*
 		 * entity.setTrainer_id(cto.getTrainer_id());
 		 * 
 		 * entity.setComment(cto.getComment());
 		 */
 
-        return entity;
+		return entity;
 
-    }
+	}
+	public void deleteCourse(int id)
+	{
+		repository.deleteById(id);
+	}
 
 
 

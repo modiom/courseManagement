@@ -78,7 +78,7 @@ public class TrainerAllocation {
 		@JsonSerialize
 		@OneToOne
 	    @JoinColumn(name = "backup_trainer_id")
-	    private Trainer backup_trainer;
+	    private Trainer backupTrainer;
 	    
 		@JsonDeserialize
 		@JsonFormat(pattern = "yyyy-MM-dd h:mm:ss")
@@ -105,16 +105,16 @@ public class TrainerAllocation {
 		@Override
 		public String toString() {
 			return "TrainerAllocation [trainer_allocation_id=" + trainer_allocation_id + ", course=" + course
-					+ ", trainer=" + trainer + ", backup_trainer=" + backup_trainer + ", end_time=" + end_time
+					+ ", trainer=" + trainer + ", backup_trainer=" + backupTrainer + ", end_time=" + end_time
 					+ ", start_time=" + start_time + "]";
 		}
 
 		public Trainer getBackup_trainer() {
-			return backup_trainer;
+			return backupTrainer;
 		}
 
 		public void setBackup_trainer(Trainer backup_trainer) {
-			this.backup_trainer = backup_trainer;
+			this.backupTrainer = backup_trainer;
 		}
 
 		

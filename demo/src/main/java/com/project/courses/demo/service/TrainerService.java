@@ -14,6 +14,7 @@ import com.project.courses.demo.model.CourseModel;
 import com.project.courses.demo.model.TrainerModel;
 import com.project.courses.demo.repo.CourseTrainerRepository;
 import com.project.courses.demo.repo.CoursesRepository;
+import com.project.courses.demo.repo.TrainerAllocationRepository;
 import com.project.courses.demo.repo.TrainerRepository;
 @Component
 public class TrainerService {
@@ -23,6 +24,8 @@ public class TrainerService {
 	private CoursesRepository courseRepository;
 	@Autowired
 	private CourseTrainerRepository courseTrainerRepository;
+	@Autowired
+	private TrainerAllocationRepository trainerAllocationRepository;
 	public List<TrainerModel> getTrainers()
 	{
 		List<Trainer> trainers=(List<Trainer>) trainerRepository.findAll();
@@ -89,12 +92,23 @@ public class TrainerService {
 	public  Boolean deleteTrainer(Integer trainerId)
 	{
 		Optional<Trainer> trainerCheck=trainerRepository.findById(trainerId);
+		System.out.println(trainerCheck);
 		if(trainerCheck.isPresent())
 		{
 			Trainer trainer=trainerCheck.get();
-			courseTrainerRepository.deleteByTrainer(trainer);
-			trainerRepository.delete(trainer);
-			return true;
+			if(trainerAllocationRepository.findByBackupTrainer(trainer).size()==0)
+			{
+				List<CourseTrainer> courseTrainers=courseTrainerRepository.findByTrainer(trainer);
+				courseTrainerRepository.deleteAll(courseTrainers);
+				System.out.println("Deletes Mapping");
+				System.out.println(trainer);
+				trainerRepository.delete(trainer);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{

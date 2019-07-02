@@ -17,14 +17,14 @@ public class Course {
 	private int course_id;
 	
 	@Column(name="course_name")
-	private String course_name;
+	private String courseName;
 	
 	
 	
 	public Course() {}
 
 	public Course(String course_name) {
-		this.course_name = course_name;
+		this.courseName = course_name;
 		
 	}
 
@@ -37,18 +37,18 @@ public class Course {
 	}
 
 	public String getCourse_name() {
-		return course_name;
+		return courseName;
 	}
 
 	public void setCourse_name(String course_name) {
-		this.course_name = course_name;
+		this.courseName = course_name;
 	}
 
 	
 
 	@Override
 	public String toString() {
-		return "courses [course_id=" + course_id + ", course_name=" + course_name +"]";
+		return "courses [course_id=" + course_id + ", course_name=" + courseName +"]";
 	}
 	
 	

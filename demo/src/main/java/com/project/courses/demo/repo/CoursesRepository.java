@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.project.courses.demo.entity.Course;
 
 @Repository
-public interface CoursesRepository extends CrudRepository<Course, Integer> {}
+public interface CoursesRepository extends CrudRepository<Course, Integer> {
+	Course findByCourseName(String course_name);
+}

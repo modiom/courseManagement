@@ -127,7 +127,10 @@ public class TrainerService {
 			Trainer trainer=new Trainer();
 			trainer.setTrainer_name(trainerDto.getTrainerName());
 			trainer.setTrainer_id(trainerDto.getTrainerId());
-			if(courseTrainerRepository.deleteByTrainer(trainer)) {
+
+			if(trainerAllocationRepository.findByBackupTrainer(trainer).size()==0) 
+			{
+				courseTrainerRepository.deleteByTrainer(trainer);
 				List<CourseTrainer> courseTrainers=new ArrayList<>();
 				for(CourseModel course:trainerDto.getCourses())
 				{

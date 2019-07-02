@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.entity.TrainerAllocation;
-import com.project.courses.demo.model.CourseModel;
 import com.project.courses.demo.model.Timesheet;
 import com.project.courses.demo.service.TrainerAllocationService;
 
@@ -32,23 +31,29 @@ public class TrainerAllocationController {
 
 	    @PostMapping
 	    public void addTimetable(@RequestBody List<Timesheet> cto) {
-
+	    	System.out.println(cto.toString());
 	        service.addTimesheet(cto);
 
 	    }
 	    
-	    @GetMapping("/dummy")
-	    public Timesheet getdummy() {
-	        return service.dummy();
+	    @PostMapping("/update")
+	    public void updateTimetable(@RequestBody Timesheet cto) {
+			service.updateTimesheet(cto);
+
+		}
+	   
+	    @DeleteMapping("/delete/{id}")
+	    public void deleteTimetable(@PathVariable(required=true) int id) {
+			service.deleteTimetable(id);
+
+		}
+
+	    @GetMapping("/{id}")
+	    public TrainerAllocation getById(@PathVariable(required = true) int id) {
+
+	        return service.getById(id);
 
 	    }
-//
-//	    @GetMapping("/{id}")
-//	    public Course getById(@PathVariable(required = true) int id) {
-//
-//	        return service.getCoursesById(id);
-//
-//	    }
 
 	   
 	

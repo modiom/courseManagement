@@ -5,18 +5,14 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.serialize.LocalDateDeserializer;
-import com.serialize.LocalDateSerializer;
 
 
 @Entity
@@ -84,13 +80,13 @@ public class TrainerAllocation {
 	    @JoinColumn(name = "backup_trainer_id")
 	    private Trainer backup_trainer;
 	    
-		@JsonDeserialize(using = LocalDateDeserializer.class)  
-		@JsonSerialize(using = LocalDateSerializer.class)  
-		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+		@JsonDeserialize
+		@JsonFormat(pattern = "yyyy-MM-dd h:mm:ss")
 	    @Column(name="end_time")
 	    private LocalDateTime end_time;
 	    
-		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+		@JsonDeserialize
+		@JsonFormat(pattern = "yyyy-MM-dd h:mm:ss")
 	    @Column(name="start_time")
 	    private LocalDateTime start_time;
 		

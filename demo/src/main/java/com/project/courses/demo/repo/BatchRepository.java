@@ -8,4 +8,5 @@ import com.project.courses.demo.entity.Batch;
 @Repository
 public interface BatchRepository extends CrudRepository<Batch, Integer> {
 	Batch findByBatchId(int batch_id);
+	Batch findByBatchName(String batchName);
 }

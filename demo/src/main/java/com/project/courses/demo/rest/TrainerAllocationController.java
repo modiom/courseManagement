@@ -3,16 +3,20 @@ package com.project.courses.demo.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.courses.demo.entity.TrainerAllocation;
+import com.project.courses.demo.model.BatchModel;
 import com.project.courses.demo.model.Timesheet;
 import com.project.courses.demo.service.TrainerAllocationService;
 
@@ -41,6 +45,18 @@ public class TrainerAllocationController {
 			service.updateTimesheet(cto);
 
 		}
+	    @PutMapping("/update/{batchId}")
+	    public ResponseEntity<Void> updateTimesheet(@RequestBody List<Timesheet> timesheet,@PathVariable Integer batchId)
+	    {
+	    	if(this.service.udateTimesheet(timesheet, batchId))
+	    	{
+	    		return new ResponseEntity<Void>(HttpStatus.OK);
+	    	}
+	    	else
+	    	{
+	    		return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+	    	}
+	    }
 	   
 	    @DeleteMapping("/delete/{id}")
 	    public void deleteTimetable(@PathVariable(required=true) int id) {
@@ -53,6 +69,20 @@ public class TrainerAllocationController {
 
 	        return service.getById(id);
 
+	    }
+	    @GetMapping("/batch/{id}")
+	    public ResponseEntity<BatchModel> getTimesheetForBatch(@PathVariable(required = true) int id)
+	    {
+	    	BatchModel batchDto=service.getTimesheetByBatch(id);
+	    	if(batchDto==null)
+	    	{
+	    		return new ResponseEntity<BatchModel>(HttpStatus.BAD_REQUEST);
+	    	}
+	    	else
+	    	{
+	    		return new ResponseEntity<BatchModel>(batchDto,HttpStatus.OK);
+	    	}
+	    	
 	    }
 
 	   

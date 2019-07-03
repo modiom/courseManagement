@@ -2,6 +2,7 @@ package com.project.courses.demo.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import com.project.courses.demo.entity.Batch;
 import com.project.courses.demo.entity.Course;
 import com.project.courses.demo.entity.Trainer;
 import com.project.courses.demo.entity.TrainerAllocation;
+import com.project.courses.demo.model.BatchModel;
 import com.project.courses.demo.model.Timesheet;
 import com.project.courses.demo.repo.BatchRepository;
 import com.project.courses.demo.repo.CoursesRepository;
@@ -33,6 +35,23 @@ public class TrainerAllocationService {
 	public List<TrainerAllocation> getTimesheet() {
 		return (List<TrainerAllocation>) repository.findAll();
 	}
+	public BatchModel getTimesheetByBatch(int batchId)
+	{
+		Batch batch=batchRepository.findByBatchId(batchId);
+		if(batch==null)
+		{
+			return null;
+		}
+		else
+		{
+			List<TrainerAllocation> trainerAllocation=repository.findByBatch(batch);
+			BatchModel batchModel=new BatchModel();
+			batchModel.setBatchId(batchId);
+			batchModel.setBatchName(batch.getBatchName());
+			batchModel.setTrainerAllocation(trainerAllocation);
+			return batchModel;
+		}
+	}
 
 	public void addTimesheet(List<Timesheet> dto) {
 
@@ -40,6 +59,26 @@ public class TrainerAllocationService {
 			repository.save(toEntity(c));
 
 		}
+
+	}
+	
+	public boolean udateTimesheet(List<Timesheet> dto,int batchId) {
+		Batch batch=batchRepository.findByBatchId(batchId);
+		if(batch==null)
+		{
+			return false;
+		}
+		else
+		{
+			repository.deleteByBatch(batch);
+			for (Timesheet c : dto) 
+			{
+				repository.save(toEntity(c));
+
+			}
+			return true;
+		}
+
 
 	}
 

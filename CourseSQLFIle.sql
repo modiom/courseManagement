@@ -69,7 +69,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `COURSE`.`batch` (
   `batch_id` INT NOT NULL AUTO_INCREMENT,
   `batch_name` VARCHAR(45) NOT NULL,
-  `batch_year` INT NOT NULL,
   PRIMARY KEY (`batch_id`))
 ENGINE = InnoDB;
 

@@ -48,6 +48,7 @@ public class TrainerAllocationController {
 	    @PutMapping("/update/{batchId}")
 	    public ResponseEntity<Void> updateTimesheet(@RequestBody List<Timesheet> timesheet,@PathVariable Integer batchId)
 	    {
+	    	System.out.println("Update Timesheet Called");
 	    	if(this.service.udateTimesheet(timesheet, batchId))
 	    	{
 	    		return new ResponseEntity<Void>(HttpStatus.OK);

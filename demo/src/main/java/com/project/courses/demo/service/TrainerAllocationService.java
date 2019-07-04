@@ -70,7 +70,9 @@ public class TrainerAllocationService {
 		}
 		else
 		{
-			repository.deleteByBatch(batch);
+			System.out.println("Abc");
+			List<TrainerAllocation> trainerAllocations=repository.findByBatch(batch);
+			repository.deleteAll(trainerAllocations);
 			for (Timesheet c : dto) 
 			{
 				repository.save(toEntity(c));

@@ -47,7 +47,7 @@ public class TrainerService {
 	}
 	public Boolean addTrainer(TrainerModel trainerDto)
 	{
-		Trainer trainer=trainerRepository.findByTrainerName(trainerDto.getTrainerName());
+		Trainer trainer=trainerRepository.findByTrainerName(trainerDto.getTrainerName().toLowerCase());
 		if(trainer!=null)
 		{
 			return false;
@@ -55,7 +55,7 @@ public class TrainerService {
 		else
 		{
 			trainer=new Trainer();
-			trainer.setTrainer_name(trainerDto.getTrainerName());
+			trainer.setTrainer_name(trainerDto.getTrainerName().toLowerCase());
 			List<CourseTrainer> courseTrainers=new ArrayList<>();
 			for(CourseModel course:trainerDto.getCourses())
 			{

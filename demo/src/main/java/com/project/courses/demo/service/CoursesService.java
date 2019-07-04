@@ -25,7 +25,7 @@ public class CoursesService {
 	}
 	public boolean addCourse(CourseModel courseDto)
 	{
-		Course course=repository.findByCourseName(courseDto.getCourse_name());
+		Course course=repository.findByCourseName(courseDto.getCourse_name().toLowerCase());
 		if(course!=null)
 		{
 			return false;
@@ -56,7 +56,7 @@ public class CoursesService {
 
 		Course entity = new Course();
 
-		entity.setCourse_name(cto.getCourse_name());
+		entity.setCourse_name(cto.getCourse_name().toLowerCase());
 
 		/*
 		 * entity.setTrainer_id(cto.getTrainer_id());

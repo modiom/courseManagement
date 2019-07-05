@@ -82,12 +82,12 @@ public class TrainerAllocation {
 	    private Trainer backupTrainer;
 	    
 		@JsonDeserialize
-		@JsonFormat(pattern = "yyyy-MM-dd h:mm:ss")
+		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	    @Column(name="end_time")
 	    private LocalDateTime end_time;
 	    
 		@JsonDeserialize
-		@JsonFormat(pattern = "yyyy-MM-dd h:mm:ss")
+		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	    @Column(name="start_time")
 	    private LocalDateTime start_time;
 		

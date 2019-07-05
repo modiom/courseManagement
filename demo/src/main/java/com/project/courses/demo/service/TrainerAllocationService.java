@@ -73,6 +73,7 @@ public class TrainerAllocationService {
 			System.out.println("Abc");
 			List<TrainerAllocation> trainerAllocations=repository.findByBatch(batch);
 			repository.deleteAll(trainerAllocations);
+			System.out.println("Deleted");
 			for (Timesheet c : dto) 
 			{
 				repository.save(toEntity(c));
@@ -100,6 +101,9 @@ public class TrainerAllocationService {
 		entity.setTrainer(trainer);
 		Trainer backupTrainer = trainerRepository.findByTrainerId(cto.getBackup_trainer_id());
 		entity.setBackup_trainer(backupTrainer);
+		
+		System.out.println("********BatchId******* "+cto.getBatch_id());
+		
 		Batch batch = batchRepository.findByBatchId(cto.getBatch_id());
 		entity.setBatch(batch);
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

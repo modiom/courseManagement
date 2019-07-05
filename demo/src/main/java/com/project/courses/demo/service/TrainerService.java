@@ -96,7 +96,7 @@ public class TrainerService {
 		if(trainerCheck.isPresent())
 		{
 			Trainer trainer=trainerCheck.get();
-			if(trainerAllocationRepository.findByBackupTrainer(trainer).size()==0)
+			if(trainerAllocationRepository.findByBackupTrainer(trainer).size()==0&&trainerAllocationRepository.findByTrainer(trainer).size()==0)
 			{
 				List<CourseTrainer> courseTrainers=courseTrainerRepository.findByTrainer(trainer);
 				courseTrainerRepository.deleteAll(courseTrainers);

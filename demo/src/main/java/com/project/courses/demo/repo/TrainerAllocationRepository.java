@@ -12,4 +12,6 @@ import com.project.courses.demo.entity.TrainerAllocation;
 public interface TrainerAllocationRepository  extends CrudRepository<TrainerAllocation, Integer>{
 	List<TrainerAllocation> findByBackupTrainer(Trainer backupTrainer);
 	List<TrainerAllocation> findByBatch(Batch batch);
+	List<TrainerAllocation> findByTrainer(Trainer trainer);
+	
 }
